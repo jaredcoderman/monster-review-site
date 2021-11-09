@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+monster1 = Monster.create( name: "Godzilla", description: "Huge boy, likes to stomp cities", 
+image: "http.image"
+)
+monster2 = Monster.create( name: "Dracula", description: "Thirsty boy, likes to wear capes",
+ image: "http.image"
+)
+monster3 = Monster.create( name: "King Kong", description: "Hairy boy that is very scary and large", image: "http.image"
+)
