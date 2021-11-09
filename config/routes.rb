@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :monsters
 
   # get "/api/v1/monsters", to: "api/v1/monsters#index"
+  patch "/api/v1/monsters/", to: "api/v1/monsters#update"
 
   namespace :api do
     namespace :v1 do
-      resources :monsters, only: [:index]
+      resources :monsters, only: [:index, :update]
     end
   end
 end

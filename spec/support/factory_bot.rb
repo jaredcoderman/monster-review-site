@@ -7,4 +7,9 @@ FactoryBot.define do
     password_confirmation { 'password' }
   end
 
+  factory :monster do
+    sequence(:name) {|n| "monster#{n}"}
+    description { "super scary monster AHHHHHHHHHHHHHH"}
+    image { "https://google.com"}
+  end
 end
