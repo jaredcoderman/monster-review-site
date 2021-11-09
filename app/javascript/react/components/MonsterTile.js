@@ -51,10 +51,6 @@ const MonsterTile = props => {
     }
   }
 
-  useEffect(() => {
-
-  }, [votes])
-
   if (shouldRedirect) {
     return <Redirect push to={`/monsters/${monster.id}`} />
   } 
