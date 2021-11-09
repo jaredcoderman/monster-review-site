@@ -68,7 +68,7 @@ const MonsterTile = props => {
         </div>
         <div className="small-8 cell columns">
          <h4>{monster.name}</h4>
-         <p>Rating: </p>
+         <p>Classification: </p>
         </div>  
       </div>  
     </div>
