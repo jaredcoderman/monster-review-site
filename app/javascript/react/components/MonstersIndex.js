@@ -26,9 +26,13 @@ const MonstersIndex = () => {
   })
 
   return (
-    <div>
-      <h1>Monsters</h1>
-      {monsters}
+    <div className="grid-container">
+      <div className= "text-center">
+        <h1>Monsters</h1>
+      </div>
+      <div className="grid-x grid-margin-x">
+        {monsters}
+      </div>
     </div>
   )
 }
