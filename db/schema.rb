@@ -19,9 +19,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_150717) do
     t.string "name", null: false
     t.string "habitat"
     t.text "description", null: false
-    t.string "image", null: false
     t.string "classification"
-    t.integer "votes", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

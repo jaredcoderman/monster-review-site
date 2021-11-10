@@ -96,13 +96,15 @@ GEM
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
     ffi (1.15.4)
+    font-awesome-rails (4.7.0.7)
+      railties (>= 3.2, < 7)
     foundation-rails (6.6.2.0)
       railties (>= 3.1.0)
       sass (>= 3.3.0)
       sprockets-es6 (>= 0.9.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
@@ -112,10 +114,9 @@ GEM
       thor (>= 0.14, < 2.0)
     launchy (2.5.0)
       addressable (~> 2.7)
-    listen (3.1.5)
+    listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -190,8 +191,7 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.10.2)
-    ruby_dep (1.5.0)
+    rspec-support (3.10.3)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -247,6 +247,7 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   factory_bot
+  font-awesome-rails
   foundation-rails (~> 6.5)
   jbuilder (~> 2.5)
   jquery-rails
