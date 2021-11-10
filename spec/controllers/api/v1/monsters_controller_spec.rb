@@ -16,11 +16,9 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
 
       expect(monster_1["name"]).to eq "monster1"
       expect(monster_1["description"]).to eq "super scary monster AHHHHHHHHHHHHHH"
-      expect(monster_1["image"]).to eq "https://google.com"
 
       expect(monster_2["name"]).to eq "monster2"
       expect(monster_2["description"]).to eq "super scary monster AHHHHHHHHHHHHHH"
-      expect(monster_2["image"]).to eq "https://google.com"
     end
   end
 end

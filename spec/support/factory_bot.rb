@@ -10,6 +10,5 @@ FactoryBot.define do
   factory :monster do
     sequence(:name) {|n| "monster#{n}"}
     description { "super scary monster AHHHHHHHHHHHHHH"}
-    image { "https://google.com"}
   end
 end
