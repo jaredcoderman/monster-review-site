@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "monsters#index"
+  root "homes#index"
 
   namespace :api do
     namespace :v1 do
