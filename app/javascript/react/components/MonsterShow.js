@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
-
 const MonsterShow = (props) => {
 
   const [monster, setMonster] = useState({})
