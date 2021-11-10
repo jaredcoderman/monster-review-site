@@ -1,18 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, {useState, useEffect} from "react"
-import { Redirect } from "react-router-dom"
 
 const MonsterTile = props => {
   const { monster } = props
-  const [shouldRedirect, setShouldRedirect] = useState(false)
-  const changeRedirect = event => {
-    setShouldRedirect(true)
-  }
-
-
-  if (shouldRedirect) {
-    return <Redirect push to={`/monsters/${monster.id}`} />
-  } 
 
   return (
     <div className="callout secondary cell small-6 row grid-x">
