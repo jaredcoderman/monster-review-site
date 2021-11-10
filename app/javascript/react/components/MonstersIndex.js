@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect} from "react";
 import { Link } from 'react-router-dom';
-import MonsterTile from "./MonsterTile"
+import MonsterTile from "./MonsterTile";
 
 const MonstersIndex = () => {
 
