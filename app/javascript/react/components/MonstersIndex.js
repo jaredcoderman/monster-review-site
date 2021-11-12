@@ -1,6 +1,5 @@
-import React, { useState, useEffect} from "react";
-import MonsterTile from "./MonsterTile";
-
+import React, { useState, useEffect} from "react"
+import MonsterTile from "./MonsterTile"
 const MonstersIndex = () => {
 
   const [fetchedMonsters, setFetchedMonsters] = useState([])
