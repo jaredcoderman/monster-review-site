@@ -7,6 +7,7 @@ const MonsterForm = () => {
     classification: "",
     habitat: "",
   })
+  const[postResponse, setPostResponse] = useState("")
 
   const handleChange = (event) => {
     setFormData({
@@ -25,40 +26,47 @@ const MonsterForm = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({monster: formData})
       })
+      if(!response.ok) {
+        throw new Error(`${response.status} (${response.statusText})`)
+      }
+      const parsedResponse = await response.json()
+      setPostResponse(parsedResponse.response)
     } catch (error) {
-
+      console.error(error)
     }
   }
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" name="name" onChange={handleChange} value={formData.name} />
-      </label>
+    <div>
+      <p>{postResponse}</p>
+      <h1 className="text-center">Submit a Monster</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input type="text" name="name" onChange={handleChange} value={formData.name} />
+        </label>
 
-      <label>
-        Description:
-        <input type="text" name="description" onChange={handleChange} value={formData.description} />
-      </label>
+        <label>
+          Description:
+          <input type="text" name="description" onChange={handleChange} value={formData.description} />
+        </label>
 
-      <label>
-        Classification:
-        <input type="text" name="classification" onChange={handleChange} value={formData.classification} />
-      </label>
+        <label>
+          Classification:
+          <input type="text" name="classification" onChange={handleChange} value={formData.classification} />
+        </label>
 
-      <label>
-        Habitat:
-        <input type="text" name="habitat" onChange={handleChange} value={formData.habitat} />
-      </label>
+        <label>
+          Habitat:
+          <input type="text" name="habitat" onChange={handleChange} value={formData.habitat} />
+        </label>
 
-      <div>
-        <input className="button" type="submit" value="Submit" />
-      </div>
-
-    </form>
+        <div>
+          <input className="button" type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
   )
 
 }

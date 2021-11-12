@@ -21,4 +21,25 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
       expect(monster_2["description"]).to eq "super scary monster AHHHHHHHHHHHHHH"
     end
   end
+
+  describe "POST#index" do
+    it "should add a new monster to the database" do
+      post_json = {
+        monster: {
+          name: "Frankenstein's Monster",
+          description: "It's pretty self explanatory",
+          classification: "Zombie",
+          habitat: "City"
+        }
+      }
+
+      previous_monster_count = Monster.count
+      post(:create, params: post_json, format: :json)
+
+      expect(Monster.count).to eq (previous_monster_count + 1)
+      
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json; charset=utf-8")
+    end
+  end
 end
