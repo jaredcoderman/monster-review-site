@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "monsters#index"
   resources :monsters
 
+  get '/users/sign_out', to: "sessions#new"
+
   # get "/api/v1/monsters", to: "api/v1/monsters#index"
 
   namespace :api do
@@ -11,5 +13,7 @@ Rails.application.routes.draw do
       resources :monsters, only: [:index, :show]
     end
   end
+
+  resources :users, only: [:index]
 
 end
