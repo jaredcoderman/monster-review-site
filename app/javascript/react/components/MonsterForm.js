@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
 const MonsterForm = () => {
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
+    name: "",    description: "",
     classification: "",
     habitat: "",
   })
@@ -33,10 +35,16 @@ const MonsterForm = () => {
       }
       const parsedResponse = await response.json()
       setPostResponse(parsedResponse.response)
+      setShouldRedirect(true) 
     } catch (error) {
       console.error(error)
     }
   }
+
+  if(shouldRedirect) {
+    return <Redirect to= "/" /> 
+  }
+
   return (
     <div>
       <p>{postResponse}</p>
