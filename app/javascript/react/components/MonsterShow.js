@@ -1,4 +1,3 @@
-import { Binding } from "@babel/traverse";
 import React, { useState, useEffect } from "react";
 
 const MonsterShow = (props) => {
@@ -9,6 +8,7 @@ const MonsterShow = (props) => {
     try{
       let monsterId = props.match.params.id
       const response = await fetch(`/api/v1/monsters/${monsterId}`)
+
       if (!response.ok){
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
@@ -26,14 +26,14 @@ const MonsterShow = (props) => {
     getMonster()
   },[])
 
-  let classificationDiv = `Classification: ${monster.classification}`
-  let habitatDiv = `Habitat: ${monster.habitat}`
+  let classificationText = ""
+  let habitatText = ""
 
-  if (!monster.classification) {
-    classificationDiv = ""
+  if (monster.classification) {
+    classificationText = `Classification: ${monster.classification}`
   }
-  if (!monster.habitat) {
-    habitatDiv = ""
+  if (monster.habitat) {
+    habitatText = `Habitat: ${monster.habitat}`
   }
 
   return (
@@ -43,10 +43,10 @@ const MonsterShow = (props) => {
         <h1>{monster.name}</h1> 
        
         <div>
-          <p>{classificationDiv}</p>
+          <p>{classificationText}</p>
         </div>
         <div>
-          <p>{habitatDiv}</p>
+          <p>{habitatText}</p>
         </div>
         <div>
           <p>{monster.description}</p>

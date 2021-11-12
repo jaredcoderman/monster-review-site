@@ -3,11 +3,9 @@ Rails.application.routes.draw do
   root "homes#index"
   get "/monsters/:id", to: "homes#index"
 
- get "/api/v1/monsters", to: "api/v1/monsters#index"
-
   namespace :api do
     namespace :v1 do
-      resources :monsters, only: [:index]
+      resources :monsters, only: [:index, :show]
     end
   end
 end
