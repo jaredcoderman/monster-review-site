@@ -264,6 +264,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_bot
+  font-awesome-rails
   foundation-rails (~> 6.5)
   jbuilder (~> 2.5)
   jquery-rails
