@@ -1,4 +1,3 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, {useState, useEffect} from "react"
 
 const MonsterTile = props => {
@@ -12,7 +11,7 @@ const MonsterTile = props => {
       <div className="grid-x cell small-6">
         <div className="small-8 cell columns">
          <h4>{monster.name}</h4>
-         <p>Classification: {monster.classification} </p>
+         <p>Classification: {monster.classification || "UNKNOWN"} </p>
         </div>  
       </div>  
     </div>
