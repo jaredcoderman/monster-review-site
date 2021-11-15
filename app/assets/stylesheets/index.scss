@@ -1,0 +1,24 @@
+.top-bar, .top-bar ul {
+  color: white;
+  background-color: #263823;
+}
+
+.top-bar a {
+  color: white;
+}
+
+.nav-bar-info:hover {
+  transition: .5s;
+  color: black;
+}
+
+.monster-tile, .callout.secondary {
+  background-color: #222822;
+  color: white ;
+  border: solid 3px #171717;
+}
+
+.monster-tile:hover {
+  transition: .5s;
+  background-color: #334433;
+}
