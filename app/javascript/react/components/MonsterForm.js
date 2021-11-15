@@ -3,13 +3,11 @@ import { Redirect } from 'react-router-dom'
 
 const MonsterForm = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
-
   const [formData, setFormData] = useState({
     name: "",    description: "",
     classification: "",
     habitat: "",
   })
-  const[postResponse, setPostResponse] = useState("")
 
   const handleChange = (event) => {
     setFormData({
@@ -18,9 +16,11 @@ const MonsterForm = () => {
     })
   }
   const handleSubmit = (event) => {
+
     event.preventDefault()
     postNewMonster()
   }
+
   const postNewMonster = async () => {
     try { 
       const response = await fetch("/api/v1/monsters", {
@@ -34,7 +34,6 @@ const MonsterForm = () => {
         throw new Error(`${response.status} (${response.statusText})`)
       }
       const parsedResponse = await response.json()
-      setPostResponse(parsedResponse.response)
       setShouldRedirect(true) 
     } catch (error) {
       console.error(error)
@@ -76,7 +75,6 @@ const MonsterForm = () => {
       </form>
     </div>
   )
-
 }
 
 export default MonsterForm
