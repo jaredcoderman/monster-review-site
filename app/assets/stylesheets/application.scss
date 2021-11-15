@@ -14,46 +14,4 @@
  *= require_tree .
  *= require_self
  */
- @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
-
-body {
-  background-color: #263823;
-  font-family: 'Amatic SC', cursive;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-h4 {
-  font-family: 'Amatic SC', cursive;
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.top-bar, .top-bar ul {
-  color: white;
-  background-color: #263823;
-}
-
-.top-bar a {
-  color: white;
-}
-
-.nav-bar-info:hover {
-  transition: .5s;
-  color: black;
-}
-
-#monster-tile {
-  background-color: #222822;
-  color: white;
-  border: solid 3px #171717;
-}
-
-#monster-tile:hover {
-  transition: .5s;
-  background-color: #334433;
-}
-
-#monster-title {
-  color: white;
-}
+ 
