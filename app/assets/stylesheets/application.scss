@@ -17,35 +17,41 @@
  @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 
 body {
-  background-color: #2b2d24;
+  background-color: #263823;
   font-family: 'Amatic SC', cursive;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 20px;
 }
 
 h4 {
   font-family: 'Amatic SC', cursive;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
 }
 
 .top-bar, .top-bar ul {
   color: white;
-  background-color: #2b2d24;
+  background-color: #263823;
 }
 
 .top-bar a {
   color: white;
 }
 
-.top-bar {
-  border-bottom: solid 0px #1E2019; 
+.nav-bar-info:hover {
+  transition: .5s;
+  color: black;
 }
 
 #monster-tile {
-  background-color: #525c47;
+  background-color: #222822;
   color: white;
-  border: solid 5px rgb(32, 32, 32);
+  border: solid 3px #171717;
+}
+
+#monster-tile:hover {
+  transition: .5s;
+  background-color: #334433;
 }
 
 #monster-title {
