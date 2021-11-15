@@ -1,12 +1,14 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import NavBar from './NavBar'
 
 
 export const App = (props) => {
   return (
     <BrowserRouter>
-        <Route exact path="/" component={NavBar} />
+      <Switch>
+        <Route path="/" component={NavBar} />
+      </Switch>
     </BrowserRouter>
   )
 }
