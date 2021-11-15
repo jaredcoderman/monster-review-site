@@ -15,12 +15,6 @@
     </div>
   <%- end -%>
 
-  <div class="top-bar">
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-          </ul>
-  </div>  
-
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
