@@ -5,7 +5,7 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
   let!(:second_monster) { FactoryBot.create(:monster) }
 
   describe "GET#index" do
-    it "should return a list of monsters and categorization" do
+    it "should return a list of monsters and descriptions" do
       get :index 
       returned_json = JSON.parse(response.body)
       monster_1 = returned_json["monsters"].first
@@ -41,7 +41,7 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json; charset=utf-8")
     end
-    it "should not accept a monster without the right attributes" do
+    it "should not accept a monster without a name" do
       post_json = {
         monster: {
           name: "",
@@ -50,6 +50,12 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
           habitat: "City"
         }
       }
+      previous_monster_count = Monster.count
+      post(:create, params: post_json, format: :json)
+
+      expect(Monster.count).to eq (previous_monster_count)
+    end
+    it "should not accept a monster without a description" do
       post_json = {
         monster: {
           name: "Frankenstein's Monster",
@@ -58,7 +64,6 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
           habitat: "City"
         }
       }
-
       previous_monster_count = Monster.count
       post(:create, params: post_json, format: :json)
 
