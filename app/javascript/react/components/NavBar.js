@@ -11,8 +11,8 @@ const NavBar = props => {
       <div className ="navbar"> 
       <Link to="/monsters/new">Add a Monster </Link>
       <Link to="/"> Monsters </Link>
-      <Link to="/users/sign_in"> Sign In </Link>
-      <Link to="/users/sign_up"> Sign Up </Link>
+      <a href ="/users/sign_in"> Sign In </a> 
+      <a href ="/users/sign_up"> Sign Up </a>
       </div>
 
       <div>
