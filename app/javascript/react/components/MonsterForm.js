@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
+import _ from 'lodash'
 import { Redirect } from 'react-router-dom'
+import ErrorList from './ErrorList'
+
 
 const MonsterForm = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [formData, setFormData] = useState({
-    name: "",    description: "",
+    name: "",    
+    description: "",
     classification: "",
     habitat: "",
   })
@@ -15,10 +19,36 @@ const MonsterForm = () => {
       [event.currentTarget.name]: event.currentTarget.value
     })
   }
-  const handleSubmit = (event) => {
 
+  const handleSubmit = (event) => {
+    debugger
     event.preventDefault()
+    if (validateSubmission()) {
     postNewMonster()
+   }
+  }
+
+  const [errors, setErrors] = useState({})
+
+  const validateSubmission = () => {
+    let submitErrors = {}
+    const requiredFields = ["name", "description"]
+    requiredFields.forEach((field) => {
+      if (formData[field].trim() === "") {
+        submitErrors = {
+          ...submitErrors,
+          [field]: "is blank"
+        }
+      }
+    })
+    if (formData.description.length < 20) {
+      submitErrors = {
+        ...submitErrors,
+        description: "is too short"
+      }
+    }
+    setErrors(submitErrors)
+    return _.isEmpty(submitErrors)
   }
 
   const postNewMonster = async () => {
@@ -48,6 +78,7 @@ const MonsterForm = () => {
     <div>
       <h1 className="text-center">Submit a Monster</h1>
       <form onSubmit={handleSubmit}>
+        <ErrorList errors ={errors}/> 
         <label>
           Name:
           <input type="text" name="name" onChange={handleChange} value={formData.name} />
