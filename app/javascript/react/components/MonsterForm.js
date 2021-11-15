@@ -46,7 +46,6 @@ const MonsterForm = () => {
 
   return (
     <div>
-      <p>{postResponse}</p>
       <h1 className="text-center">Submit a Monster</h1>
       <form onSubmit={handleSubmit}>
         <label>
