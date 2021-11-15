@@ -3,7 +3,6 @@ import _ from 'lodash'
 import { Redirect } from 'react-router-dom'
 import ErrorList from './ErrorList'
 
-
 const MonsterForm = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [formData, setFormData] = useState({
@@ -18,10 +17,10 @@ const MonsterForm = () => {
       ...formData,
       [event.currentTarget.name]: event.currentTarget.value
     })
+
   }
 
   const handleSubmit = (event) => {
-    debugger
     event.preventDefault()
     if (validateSubmission()) {
     postNewMonster()
