@@ -11,14 +11,13 @@ const MonsterShow = (props) => {
     try{
       let monsterId = props.match.params.id
       const response = await fetch(`/api/v1/monsters/${monsterId}`)
-
       if (!response.ok){
         const errorMessage = `${response.status} (${response.statusText})`
         const error = new Error(errorMessage)
         throw error
       } 
       const fetchedMonster = await response.json()
-      setMonster(fetchedMonster.monster) 
+      setMonster(fetchedMonster) 
     }
     catch (err){
       console.log(`Error in fetch: ${err.message}`)
@@ -31,13 +30,14 @@ const MonsterShow = (props) => {
 
   let classificationText = ""
   let habitatText = ""
-
+  
   if (monster.classification) {
     classificationText = `Classification: ${monster.classification}`
   }
   if (monster.habitat) {
     habitatText = `Habitat: ${monster.habitat}`
   }
+
   const reviews = monster.reviews.map((review) => {
     return <ReviewTile review={review} />
   })
