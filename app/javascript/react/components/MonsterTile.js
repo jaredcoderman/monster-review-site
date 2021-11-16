@@ -4,7 +4,7 @@ const MonsterTile = props => {
   const { monster } = props
 
   return (
-    <div className="callout secondary cell small-6 row grid-x">
+    <div className="monster-tile callout secondary cell small-6 row grid-x">
       <div className="small-1 cell">
         
       </div>  
