@@ -11,4 +11,6 @@ monster3 = Monster.create( name: "King Kong", description: "Hairy boy that is ve
 
 review_1 = Review.create( monster: monster3, description: 'This is my favorite monster!', votes: 4)
 review_2 = Review.create( monster: monster1, description: 'Too Scary!', votes: 1)
-review_3 = Review.create( monster: monster2, description: 'Very Nostaligic for me.', votes: 3)
+review_3 = Review.create( monster: monster1, description: 'Super spooky wow scary!!', votes: 12)
+review_4 = Review.create( monster: monster1, description: 'Terrifying vampire wow!', votes: 11)
+review_5 = Review.create( monster: monster2, description: 'Very Nostaligic for me.', votes: 3)
