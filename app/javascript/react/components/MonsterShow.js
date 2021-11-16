@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import ReviewTile from './ReviewTile'
 
 const MonsterShow = (props) => {
 
-  const [monster, setMonster] = useState({})
+  const [monster, setMonster] = useState({
+    reviews: []
+  })
 
   const getMonster = async () => {
     try{
@@ -15,7 +18,7 @@ const MonsterShow = (props) => {
         throw error
       } 
       const fetchedMonster = await response.json()
-      setMonster(fetchedMonster.monsters) 
+      setMonster(fetchedMonster.monster) 
     }
     catch (err){
       console.log(`Error in fetch: ${err.message}`)
@@ -35,8 +38,11 @@ const MonsterShow = (props) => {
   if (monster.habitat) {
     habitatText = `Habitat: ${monster.habitat}`
   }
-
+  const reviews = monster.reviews.map((review) => {
+    return <ReviewTile review={review} />
+  })
   return (
+    <div>
     <div className="callout secondary cell small-6 row grid-x">
 
       <div className="cell small-6"> 
@@ -52,7 +58,10 @@ const MonsterShow = (props) => {
           <p>{monster.description}</p>
         </div>
       </div>     
-
+    </div>
+      <div>
+        {reviews}
+      </div>
     </div>
   );
 };
