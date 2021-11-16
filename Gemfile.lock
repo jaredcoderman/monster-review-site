@@ -273,6 +273,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (>= 3.0.5, < 3.3.0)
+  nokogiri
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 3.11)
