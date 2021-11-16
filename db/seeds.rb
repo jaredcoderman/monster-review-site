@@ -8,3 +8,9 @@
 monster1 = Monster.create( name: "Godzilla", description: "Huge boy, likes to stomp cities", classification: "Giant")
 monster2 = Monster.create( name: "Dracula", description: "Thirsty boy, likes to wear capes", classification: "Vampire")
 monster3 = Monster.create( name: "King Kong", description: "Hairy boy that is very scary and large", classification: "Giant")
+
+review_1 = Review.create( monster: monster3, description: 'This is my favorite monster!', votes: 4)
+review_2 = Review.create( monster: monster1, description: 'Too Scary!', votes: 1)
+review_3 = Review.create( monster: monster1, description: 'Super spooky wow scary!!', votes: 12)
+review_4 = Review.create( monster: monster1, description: 'Terrifying vampire wow!', votes: 11)
+review_5 = Review.create( monster: monster2, description: 'Very Nostaligic for me.', votes: 3)

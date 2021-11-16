@@ -1,11 +1,11 @@
 class Api::V1::MonstersController < ApplicationController
 
   def index 
-    render json: {monsters: Monster.all}
+    render json: Monster.all
   end
 
   def show 
-    render json: {monsters: Monster.find(params[:id])}
+    render json: Monster.find(params[:id])
   end 
 
   def create
