@@ -1,7 +1,8 @@
 class Api::V1::MonstersController < ApplicationController
 
   def index 
-    render json: {monsters: Monster.all}
+    user_status = current_user()
+    render json: {monsters: Monster.all, user: user_status}
   end
 
   def show 

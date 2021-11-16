@@ -4,20 +4,21 @@ import MonstersIndex from "./MonstersIndex"
 import MonsterShow from "./MonsterShow"
 // import MonsterTile from "./MonsterTile"
 import MonsterForm from "./MonsterForm"
+import SignInTile from "./SignInTile"
 
 const NavBar = props => {
-const [signedIn, setSignedIn] = useState("")
-debugger
+  const [signedIn, setSignedIn] = useState(null)
 
 const fetchUser = async () => {
   try {
-    const response = await fetch("/api/v1/users")
-    debugger
+    const response = await fetch("/api/v1/monsters", {
+      credentials: "same-origin"
+    })
     if(!response.ok) {
       throw new Error (`${response.status}: ${response.statusText}`)
     }
     const responseBody = await response.json()
-    setSignedIn(responseBody.user.id)
+    setSignedIn(responseBody.user)
   } catch(err) {
     console.log(err)
   }
@@ -27,12 +28,9 @@ useEffect(() => {
   fetchUser()
 }, [])
 
-// let signedInDiv = <a href ="/users/sign_out" data-method="delete"> Sign Out</a>
-// const signedOutDiv = <a href ="/users/sign_out" data-method="delete"> Sign Out</a>
-
   return(
   <div>
-    <div className="grid-container">
+    <div className="grid-container navbar">
       <div className ="top-bar cell grid-x"> 
         <div className="cell small-4">
           <Link to="/monsters/new">Add a Monster </Link>
@@ -41,15 +39,14 @@ useEffect(() => {
           <Link to="/"> Monsters </Link>
         </div>
         <div className="cell small-4">
-          <a href ="/users/sign_in"> Sign In </a>/<a href ="/users/sign_up"> Sign Up </a>
-          <a href ="/users/sign_out" data-method="delete"> Sign Out</a>
+          <SignInTile signedIn={signedIn}/>
         </div>  
       </div>
     </div>
     <div>
-          <Route exact path="/monsters/new" component = {MonsterForm} />
-          <Route exact path="/" component = {MonstersIndex} />
-          <Route exact path="/monsters/:id" component = {MonsterShow} />
+      <Route exact path="/monsters/new" component = {MonsterForm} />
+      <Route exact path="/" component = {MonstersIndex} />
+      <Route exact path="/monsters/:id" component = {MonsterShow} />
     </div>
 
   </div>
