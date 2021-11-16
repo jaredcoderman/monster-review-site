@@ -12,4 +12,9 @@ FactoryBot.define do
     sequence(:name) {|n| "monster#{n}"}
     description { "super scary monster AHHHHHHHHHHHHHH"}
   end
+
+  factory :review do
+    sequence(:description) {|n| "scary!#{n}"}
+    sequence(:votes) { |n| n }
+  end
 end

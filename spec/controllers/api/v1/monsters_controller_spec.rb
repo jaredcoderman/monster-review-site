@@ -3,13 +3,24 @@ require "rails_helper"
 RSpec.describe Api::V1::MonstersController, type: :controller do 
   let!(:first_monster) { FactoryBot.create(:monster) }
   let!(:second_monster) { FactoryBot.create(:monster) }
+  let!(:review_one) { FactoryBot.create(:review, monster: first_monster)}
+  let!(:review_two) { FactoryBot.create(:review, monster: first_monster)}
 
   describe "GET#index" do
     it "should return a list of monsters and descriptions" do
       get :index 
-      returned_json = JSON.parse(response.body)
+      returned_json = JSON.parse(response.body) 
+      
       monster_1 = returned_json["monsters"].first
+      reviews = monster_1["reviews"]
+
       monster_2 = returned_json["monsters"].second
+
+      expect(reviews.first["description"]).to eq review_one.description
+      expect(reviews.first["votes"]).to eq review_one.votes
+      
+      expect(reviews.second["description"]).to eq review_two.description
+      expect(reviews.second["votes"]).to eq review_two.votes
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq("application/json; charset=utf-8")
@@ -86,29 +97,32 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
   end
 
   let!(:first_monster) { FactoryBot.create(:monster) }
-  let!(:second_monster) { FactoryBot.create(:monster) }
+  let!(:review_one) { FactoryBot.create(:review, monster: first_monster)}
+  let!(:review_two) { FactoryBot.create(:review, monster: first_monster)}
 
   describe "GET#show" do 
     it "should return return information about the monster" do
       get :show, params: {id: first_monster.id} 
       returned_json = JSON.parse(response.body)
-      monster = returned_json["monsters"]
+      monster = returned_json["monster"]
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq ("application/json; charset=utf-8") 
 
+      returned_json = JSON.parse(response.body)
+      monster = returned_json["monster"]
+      
+      reviews = monster["reviews"]
+      
       expect(monster["name"]).to eq first_monster.name
       expect(monster["description"]).to eq first_monster.description
 
-      get :show, params: {id: second_monster.id} 
-      returned_json = JSON.parse(response.body)
-      monster = returned_json["monsters"]
 
-      expect(response.status).to eq 200
-      expect(response.content_type).to eq ("application/json; charset=utf-8") 
-
-      expect(monster["name"]).to eq second_monster.name
-      expect(monster["description"]).to eq second_monster.description
+      expect(reviews.first["description"]).to eq review_one.description
+      expect(reviews.first["votes"]).to eq review_one.votes
+      
+      expect(reviews.second["description"]).to eq review_two.description
+      expect(reviews.second["votes"]).to eq review_two.votes
     end 
   end 
 end 

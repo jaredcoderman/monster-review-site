@@ -6,7 +6,7 @@ class Api::V1::MonstersController < ApplicationController
   end
 
   def show 
-    render json: {monsters: Monster.find(params[:id])}
+    render json: Monster.find(params[:id])
   end 
 
   def create
