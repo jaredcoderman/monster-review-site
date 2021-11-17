@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { Route, Link } from "react-router-dom"
 import MonstersIndex from "./MonstersIndex"
 import MonsterShow from "./MonsterShow"
-// import MonsterTile from "./MonsterTile"
 import MonsterForm from "./MonsterForm"
 import SignInTile from "./SignInTile"
 
@@ -11,14 +10,14 @@ const NavBar = props => {
 
 const fetchUser = async () => {
   try {
-    const response = await fetch("/api/v1/monsters", {
+    const response = await fetch("/api/v1/users", {
       credentials: "same-origin"
     })
     if(!response.ok) {
       throw new Error (`${response.status}: ${response.statusText}`)
     }
     const responseBody = await response.json()
-    setSignedIn(responseBody.user)
+    setSignedIn(responseBody.users)
   } catch(err) {
     console.log(err)
   }
@@ -48,7 +47,6 @@ useEffect(() => {
       <Route exact path="/" component = {MonstersIndex} />
       <Route exact path="/monsters/:id" component = {MonsterShow} />
     </div>
-
   </div>
   )
 }

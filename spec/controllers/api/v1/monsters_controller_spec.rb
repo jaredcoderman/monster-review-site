@@ -31,20 +31,6 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
       expect(monster_2["name"]).to eq second_monster.name
       expect(monster_2["description"]).to eq "super scary monster AHHHHHHHHHHHHHH"
     end
-
-    it "should return a user_id" do
-      first_user = User.create(email: "jumper@tower.com", password: "freedom", username: "anyxxgivenxxsunday")
-      sign_in first_user
-      get :index
-      returned_json = JSON.parse(response.body)
-      user1 = returned_json["user"]
-
-      expect(response.status).to eq 200
-      expect(response.content_type).to eq("application/json; charset=utf-8")
-
-      expect(user1["id"]).to eq first_user.id
-
-    end
   end
 
   describe "POST#index" do

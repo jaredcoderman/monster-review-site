@@ -17,7 +17,7 @@ const MonsterShow = (props) => {
         throw error
       } 
       const fetchedMonster = await response.json()
-      setMonster(fetchedMonster) 
+      setMonster(fetchedMonster.monster) 
     }
     catch (err){
       console.log(`Error in fetch: ${err.message}`)
