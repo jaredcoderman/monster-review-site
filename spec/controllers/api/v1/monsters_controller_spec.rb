@@ -34,7 +34,7 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
   end
 
   describe "POST#index" do
-    it "should add a new monster to the database" do
+    it "should add a new monster to the database" do 
       post_json = {
         monster: {
           name: "Frankenstein's Monster",

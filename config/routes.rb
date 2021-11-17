@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :monsters, only: [:index, :show, :create]
+      resources :monsters, only: [:index, :show, :create, :destroy]
+      resources :users, only: [:index]
     end
   end
 end
