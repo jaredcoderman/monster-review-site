@@ -1,7 +1,9 @@
 class Api::V1::ReviewsController < ApplicationController
   
   def create
-    review = Review.create(review_params)
+    review = Review.new(review_params)
+    review.monster = Monster.find(params[:id])
+    review.save
   end 
 
   private
