@@ -23,7 +23,8 @@ const MonstersIndex = () => {
     fetchMonsters()
   }, [])
 
-  const render = () => {
+  const render = (id) => {
+    debugger
     fetchMonsters()
   }
 

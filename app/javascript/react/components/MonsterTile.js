@@ -14,8 +14,8 @@ const MonsterTile = props => {
     }))
   }, [])
 
-  const render = () => {
-    props.render()
+  const render = (id) => {
+    props.render(id)
   }
 
   return (

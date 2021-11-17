@@ -1,8 +1,9 @@
 class Api::V1::MonstersController < ApplicationController
-  before_action :authenticate_user, except: [:index, :show]
-  before_action :authorize_user, except: [:index, :show, :create]
+  before_action :authenticate_user, only: [:create, :delete]
+  before_action :authorize_user, only: [:delete]
 
   def index 
+    binding.pry
     render json: Monster.all
   end
 
@@ -26,7 +27,7 @@ class Api::V1::MonstersController < ApplicationController
     render json: {}, status: :no_content
   end
 
-  protected 
+  private 
 
   def monster_params
     params.require(:monster).permit(:name, :description, :classification, :habitat)
@@ -43,4 +44,5 @@ class Api::V1::MonstersController < ApplicationController
       render json: {error: ["You are not authorized to do that!"]}
     end
   end
+
 end

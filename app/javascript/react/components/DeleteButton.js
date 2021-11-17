@@ -4,7 +4,7 @@ const DeleteButton = props => {
   const {role, id} = props
 
   const render = () => {
-    props.render()
+    props.render(id)
   }
 
   const deleteMonsterFetch = async () => {
