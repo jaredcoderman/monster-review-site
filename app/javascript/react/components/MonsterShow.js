@@ -44,7 +44,7 @@ const MonsterShow = (props) => {
     return <ReviewTile review={review} />
   })
 
-  let monsterId = props.match.params.id
+  const monsterId = props.match.params.id
 
   return (
     <div className="grid-y medium-grid-frame">
@@ -60,12 +60,6 @@ const MonsterShow = (props) => {
             <p>{monster.description}</p>
           </div>
           <div className="cell medium-7 medium-cell-block-y">
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
             {reviews}
           </div>
         </div>

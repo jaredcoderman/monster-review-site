@@ -4,6 +4,7 @@ import MonstersIndex from "./MonstersIndex"
 import MonsterShow from "./MonsterShow"
 import MonsterForm from "./MonsterForm"
 import SignInTile from "./SignInTile"
+import ReviewForm from "./ReviewForm"
 
 const NavBar = props => {
   const [signedIn, setSignedIn] = useState(null)
@@ -46,6 +47,7 @@ useEffect(() => {
       <Route exact path="/monsters/new" component = {MonsterForm} />
       <Route exact path="/" component = {MonstersIndex} />
       <Route exact path="/monsters/:id" component = {MonsterShow} />
+      <Route exact path="/monsters/:id/review/new" component = {ReviewForm} />
     </div>
   </div>
   )

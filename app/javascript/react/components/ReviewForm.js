@@ -36,16 +36,22 @@ const ReviewForm = props => {
 
   const postNewReview = async () => {
     try{
-      const response = await fetch("/api/v1/reviews", {
+      const response = await fetch(`/api/v1/monsters/${id}/reviews`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({review: {description: formData}, id: id})
+        credentials: "same-origin",
+        body: JSON.stringify({review: {description: formData}})
       })
+      if(!response.ok){
+        throw new Error(`${response.status}: ${response.statusText}`)
+      }
+      const parsedResponse = await response.json()
       setShouldRedirect(true)
-    } catch(err) {
-
+    } catch(error) {
+      console.error(error)
     }
   }
 
