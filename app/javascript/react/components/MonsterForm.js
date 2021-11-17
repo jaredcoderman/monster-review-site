@@ -70,7 +70,7 @@ const MonsterForm = () => {
   }
 
   if(shouldRedirect) {
-    return <Redirect to= "/" /> 
+    return <Redirect to="/" /> 
   }
 
   return (

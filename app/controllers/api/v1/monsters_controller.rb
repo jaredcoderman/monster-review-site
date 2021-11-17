@@ -1,4 +1,5 @@
 class Api::V1::MonstersController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
 
   def index 
     render json: Monster.all
@@ -19,9 +20,15 @@ class Api::V1::MonstersController < ApplicationController
     end
   end
 
-  private
+  protected 
 
   def monster_params
     params.require(:monster).permit(:name, :description, :classification, :habitat)
+  end
+
+  def authenticate_user 
+    if !user_signed_in?
+      render json: {error: ["You need to be signed in first!"]}
+    end
   end
 end

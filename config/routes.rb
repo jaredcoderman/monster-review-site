@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "homes#index"
-  get "/monsters/new", to: "homes#index"
+  get "/monsters/new", to: "homes#authenticated"
   get "/monsters/:id", to: "homes#index"
 
   namespace :api do
