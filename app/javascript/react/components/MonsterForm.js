@@ -78,22 +78,22 @@ const MonsterForm = () => {
       <h1 className="text-center">Submit a Monster</h1>
       <form onSubmit={handleSubmit}>
         <ErrorList errors ={errors}/> 
-        <label>
+        <label className="monster-field-labels">
           Name:
           <input type="text" name="name" onChange={handleChange} value={formData.name} />
         </label>
 
-        <label>
+        <label className="monster-field-labels">
           Description:
           <input type="text" name="description" onChange={handleChange} value={formData.description} />
         </label>
 
-        <label>
+        <label className="monster-field-labels">
           Classification:
           <input type="text" name="classification" onChange={handleChange} value={formData.classification} />
         </label>
 
-        <label>
+        <label className="monster-field-labels">
           Habitat:
           <input type="text" name="habitat" onChange={handleChange} value={formData.habitat} />
         </label>
