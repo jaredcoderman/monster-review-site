@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "homes#index"
   get "/monsters/new", to: "homes#authenticated"
   get "/monsters/:id", to: "homes#index"
+  get "/monsters/:id/review/new", to: "homes#index"
 
   namespace :api do
     namespace :v1 do

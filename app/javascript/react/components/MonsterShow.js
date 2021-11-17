@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReviewTile from './ReviewTile'
+import { Link } from "react-router-dom";
+import MonsterTile from "./MonsterTile";
 
 const MonsterShow = (props) => {
 
@@ -41,10 +43,13 @@ const MonsterShow = (props) => {
   const reviews = monster.reviews.map((review) => {
     return <ReviewTile review={review} />
   })
+
+  let monsterId = props.match.params.id
+
   return (
     <div className="grid-y medium-grid-frame">
       <div className="cell shrink header medium-cell-block-container">
-        <h1 className="text-center">Reviews</h1>
+        <h1 className="text-center">Reviews/<Link to={`/monsters/${monsterId}/review/new`}> Add a Review </Link></h1>
       </div>
       <div className="cell medium-auto medium-cell-block-container">
         <div className="grid-x grid-padding-x">
