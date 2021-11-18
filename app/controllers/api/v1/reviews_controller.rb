@@ -1,5 +1,5 @@
 class Api::V1::ReviewsController < ApplicationController
-  
+
   def create
 
     review = Review.new(review_params)
