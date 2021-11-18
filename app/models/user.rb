@@ -12,4 +12,6 @@ class User < ApplicationRecord
     role == "admin"
   end
   has_many :reviews 
+  has_many :monster_user_votes
+  has_many :monsters, through: :monster_user_votes
 end

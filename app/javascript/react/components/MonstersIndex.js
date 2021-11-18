@@ -20,13 +20,28 @@ const MonstersIndex = (props) => {
     fetchMonsters()
   }, [])
 
+  const updateMonsterVotes = (votes, id) => {
+    const newMonsters = [...fetchedMonsters]
+    newMonsters.forEach((monster) => {
+      if(monster.id == id) {
+        monster.votes = votes
+      }
+    })
+    setFetchedMonsters(newMonsters)
+  }
+  
   const filterMonsterById = (id) => {
     setFetchedMonsters(fetchedMonsters.filter(item => item.id !== id))
   }
 
   const monsters = fetchedMonsters.map((monster) => {
-    return <MonsterTile filterMonsterById={filterMonsterById} key={monster.id} monster={monster} setNotification={props.setNotification} />
+    return <MonsterTile updateMonsterVotes={updateMonsterVotes} 
+      filterMonsterById={filterMonsterById}
+      key={monster.id}
+      monster={monster} 
+      setNotification={props.setNotification}/>
   })
+  
 
   return (
     <div className="grid-container">
