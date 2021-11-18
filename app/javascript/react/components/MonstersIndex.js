@@ -3,7 +3,6 @@ import MonsterTile from "./MonsterTile"
 const MonstersIndex = () => {
 
   const [fetchedMonsters, setFetchedMonsters] = useState([])
-  const [votes, setVotes] = useState(0)
 
   const fetchMonsters = async () => {
     try {
