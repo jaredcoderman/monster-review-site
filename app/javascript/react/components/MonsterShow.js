@@ -41,7 +41,7 @@ const MonsterShow = (props) => {
   }
 
   const reviews = monster.reviews.map((review) => {
-    return <ReviewTile review={review} />
+    return <ReviewTile key={review.id} review={review} />
   })
 
   const monsterId = props.match.params.id

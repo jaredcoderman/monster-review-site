@@ -4,6 +4,7 @@ class Api::V1::ReviewsController < ApplicationController
 
     review = Review.new(review_params)
     review.monster = Monster.find(params[:monster_id])
+    review.user = current_user
     if review.save 
       render json: { response: "Review added successfully" }
     else
