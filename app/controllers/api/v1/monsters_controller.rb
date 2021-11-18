@@ -1,7 +1,6 @@
 class Api::V1::MonstersController < ApplicationController
   before_action :authenticate_user, only: [:create, :delete]
   before_action :authorize_user, only: [:delete]
-  before_action :authenticate_user!, except: [:index, :show]
 
   def index 
     render json: Monster.all

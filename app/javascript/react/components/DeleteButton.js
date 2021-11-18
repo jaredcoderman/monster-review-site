@@ -17,7 +17,7 @@ const DeleteButton = props => {
         throw new Error(`${response.status} (${response.statusText})`)
       }
       const parsedResponse = await response.json()
-      props.render(id)
+      props.filterMonsterById(id)
       props.setNotification(parsedResponse)
     } catch(err) {
       console.error(err.message)

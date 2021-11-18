@@ -25,7 +25,7 @@ const MonsterTile = props => {
          <p>Classification: {monster.classification || "UNKNOWN"} </p>
         </div>  
       </div>
-      <DeleteButton render={props.render} id={monster.id} role={role} setNotification={props.setNotification} />
+      <DeleteButton filterMonsterById={props.filterMonsterById} id={monster.id} role={role} setNotification={props.setNotification} />
     </div>
   )
 }

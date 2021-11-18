@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback} from "react"
+import React, { useState, useEffect } from "react"
 import MonsterTile from "./MonsterTile"
 const MonstersIndex = (props) => {
   const [fetchedMonsters, setFetchedMonsters] = useState([])
-  const [state, updateState] = useState ();
 
   const fetchMonsters = async () => {
     try {
@@ -21,12 +20,12 @@ const MonstersIndex = (props) => {
     fetchMonsters()
   }, [])
 
-  const render = (id) => {
+  const filterMonsterById = (id) => {
     setFetchedMonsters(fetchedMonsters.filter(item => item.id !== id))
   }
 
   const monsters = fetchedMonsters.map((monster) => {
-    return <MonsterTile render={render} key={monster.id} monster={monster} setNotification={props.setNotification} />
+    return <MonsterTile filterMonsterById={filterMonsterById} key={monster.id} monster={monster} setNotification={props.setNotification} />
   })
 
   return (
