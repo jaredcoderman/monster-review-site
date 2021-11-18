@@ -3,6 +3,7 @@ import MonsterTile from "./MonsterTile"
 const MonstersIndex = () => {
 
   const [fetchedMonsters, setFetchedMonsters] = useState([])
+  const [votes, setVotes] = useState(0)
 
   const fetchMonsters = async () => {
     try {
@@ -21,8 +22,18 @@ const MonstersIndex = () => {
     fetchMonsters()
   }, [])
 
+  const updateMonsterVotes = (votes, id) => {
+    const newMonsters = [...fetchedMonsters]
+    newMonsters.forEach((monster) => {
+      if(monster.id == id) {
+        monster.votes = votes
+      }
+    })
+    setFetchedMonsters(newMonsters)
+  }
+
   const monsters = fetchedMonsters.map((monster) => {
-    return <MonsterTile key={monster.id} monster={monster} />
+    return <MonsterTile updateMonsterVotes={updateMonsterVotes} votes={votes}  key={monster.id} monster={monster} />
   })
 
   return (

@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   validates :username, presence: true, length: { minimum: 5, maximum: 20 }, uniqueness: true
   has_many :reviews 
+  has_many :monster_user_votes
+  has_many :monsters, through: :monster_user_votes
 end
