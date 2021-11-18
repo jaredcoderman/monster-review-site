@@ -1,13 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import { Redirect } from 'react-router'
 import ErrorList from './ErrorList'
 
 const ReviewForm = props => {
+  const [notSignedIn, setNotSignedIn] = useState(false)
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [formData, setFormData] = useState("")
   const {id} = props.match.params
 
+  const [signedIn, setSignedIn] = useState(null)
+
+  const fetchUser = async () => {
+    try {
+      const response = await fetch("/api/v1/users", {
+        credentials: "same-origin"
+      })
+      if(!response.ok) {
+        throw new Error (`${response.status}: ${response.statusText}`)
+      }
+      const responseBody = await response.json()
+      if (responseBody.users === null){
+        setNotSignedIn(true)
+      }
+      setSignedIn(responseBody.users)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchUser()
+  }, [])
+  
   const handleChange = (event) => {
     setFormData(event.currentTarget.value)
   }
@@ -36,23 +61,30 @@ const ReviewForm = props => {
 
   const postNewReview = async () => {
     try{
-      const response = await fetch("/api/v1/reviews", {
+      const response = await fetch(`/api/v1/monsters/${id}/reviews`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({review: {description: formData}, id: id})
+        credentials: "same-origin",
+        body: JSON.stringify({review: {description: formData}})
       })
+      if(!response.ok){
+        throw new Error(`${response.status}: ${response.statusText}`)
+      }
+      const parsedResponse = await response.json()
       setShouldRedirect(true)
-    } catch(err) {
-
+    } catch(error) {
+      console.error(error)
     }
   }
-
+  if (notSignedIn === true){
+    window.location.href = "/users/sign_in"
+  }
   if(shouldRedirect) {
     return <Redirect to={`/monsters/${id}`} />
-  }
-
+  } 
   return(
     <div className="grid-container">
       <div className="grid-xy grid-padding-xy">
@@ -78,6 +110,5 @@ const ReviewForm = props => {
     </div>
   )
 }
-
 
 export default ReviewForm
