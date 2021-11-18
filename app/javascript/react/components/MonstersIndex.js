@@ -32,7 +32,7 @@ const MonstersIndex = () => {
   }
 
   const monsters = fetchedMonsters.map((monster) => {
-    return <MonsterTile updateMonsterVotes={updateMonsterVotes} votes={votes}  key={monster.id} monster={monster} />
+    return <MonsterTile updateMonsterVotes={updateMonsterVotes} key={monster.id} monster={monster} />
   })
 
   return (
