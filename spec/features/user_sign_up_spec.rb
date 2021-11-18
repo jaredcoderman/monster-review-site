@@ -2,8 +2,7 @@ require "rails_helper"
 
 feature "user can log in" do
   scenario "user fills in details" do
-    visit root_path
-    find('sign_up').click_link "Sign Up" #delete this
+    visit new_user_registration_path
 
     fill_in "Username", with: "Jason678"
     fill_in "Email", with: "jenkster42@hotmail.com"
