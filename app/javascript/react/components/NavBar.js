@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { Route, Link } from "react-router-dom"
+import { Route, Link, Switch } from "react-router-dom"
 import MonstersIndex from "./MonstersIndex"
 import MonsterShow from "./MonsterShow"
 import MonsterForm from "./MonsterForm"
 import SignInTile from "./SignInTile"
+import AddMonsterTile from "./AddMonsterTile"
+import DisplayNotification from "./Notification"
 import ReviewForm from "./ReviewForm"
 
 const NavBar = props => {
@@ -24,16 +26,19 @@ const fetchUser = async () => {
   }
 }
 
+const [notification, setNotification] = useState("")
+
 useEffect(() => {
   fetchUser()
 }, [])
 
   return(
   <div>
+    <DisplayNotification notification={notification} />
     <div className="grid-container navbar">
       <div className ="top-bar cell grid-x"> 
         <div className="cell small-4">
-          <Link to="/monsters/new">Add a Monster </Link>
+          <AddMonsterTile signedIn={signedIn} />
         </div>
         <div className="cell small-4">
           <Link to="/"> Monsters </Link>
@@ -44,10 +49,14 @@ useEffect(() => {
       </div>
     </div>
     <div>
-      <Route exact path="/monsters/new" component = {MonsterForm} />
-      <Route exact path="/" component = {MonstersIndex} />
-      <Route exact path="/monsters/:id" component = {MonsterShow} />
-      <Route exact path="/monsters/:id/review/new" component = {ReviewForm} />
+      <Switch>
+        <Route exact path="/monsters/new" component = {MonsterForm} />
+        <Route exact path="/">
+          <MonstersIndex setNotification={setNotification} />
+        </Route>
+        <Route exact path="/monsters/:id" component = {MonsterShow} />
+        <Route exact path="/monsters/:id/review/new" component = {ReviewForm} />
+      </Switch>
     </div>
   </div>
   )

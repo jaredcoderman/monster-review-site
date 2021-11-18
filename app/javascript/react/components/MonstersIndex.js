@@ -1,7 +1,6 @@
-import React, { useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import MonsterTile from "./MonsterTile"
-const MonstersIndex = () => {
-
+const MonstersIndex = (props) => {
   const [fetchedMonsters, setFetchedMonsters] = useState([])
 
   const fetchMonsters = async () => {
@@ -21,8 +20,12 @@ const MonstersIndex = () => {
     fetchMonsters()
   }, [])
 
+  const filterMonsterById = (id) => {
+    setFetchedMonsters(fetchedMonsters.filter(item => item.id !== id))
+  }
+
   const monsters = fetchedMonsters.map((monster) => {
-    return <MonsterTile key={monster.id} monster={monster} />
+    return <MonsterTile filterMonsterById={filterMonsterById} key={monster.id} monster={monster} setNotification={props.setNotification} />
   })
 
   return (

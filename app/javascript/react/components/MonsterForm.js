@@ -58,7 +58,7 @@ const MonsterForm = () => {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        credentials: "same-origin",
+        credentials: 'same-origin',
         body: JSON.stringify({monster: formData})
       })
       if(!response.ok) {
@@ -72,7 +72,7 @@ const MonsterForm = () => {
   }
 
   if(shouldRedirect) {
-    return <Redirect to= "/" /> 
+    return <Redirect to="/" /> 
   }
 
   return (
