@@ -5,6 +5,7 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
   let!(:second_monster) { FactoryBot.create(:monster) }
   let!(:review_one) { FactoryBot.create(:review, monster: first_monster)}
   let!(:review_two) { FactoryBot.create(:review, monster: first_monster)}
+  let!(:user) { FactoryBot.create(:user, role: "member")}
 
   describe "GET#index" do
     it "should return a list of monsters and descriptions" do
@@ -43,10 +44,10 @@ RSpec.describe Api::V1::MonstersController, type: :controller do
           habitat: "City"
         }
       }
+      sign_in user
 
       previous_monster_count = Monster.count
       post(:create, params: post_json, format: :json)
-
       expect(Monster.count).to eq (previous_monster_count + 1)
       
       expect(response.status).to eq 200

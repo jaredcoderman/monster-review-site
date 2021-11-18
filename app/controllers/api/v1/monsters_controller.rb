@@ -1,4 +1,6 @@
 class Api::V1::MonstersController < ApplicationController
+  before_action :authenticate_user, only: [:create, :delete]
+  before_action :authorize_user, only: [:delete]
 
   def index 
     render json: Monster.all
@@ -33,9 +35,15 @@ class Api::V1::MonstersController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    Monster.find(params[:id]).destroy
+    render json: { message: "Monster Deleted!" }
+  end
+
+  private 
 
   def monster_params
     params.require(:monster).permit(:name, :description, :classification, :habitat)
   end
+
 end

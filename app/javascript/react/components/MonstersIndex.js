@@ -1,7 +1,6 @@
-import React, { useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import MonsterTile from "./MonsterTile"
-const MonstersIndex = () => {
-
+const MonstersIndex = (props) => {
   const [fetchedMonsters, setFetchedMonsters] = useState([])
 
   const fetchMonsters = async () => {
@@ -30,10 +29,19 @@ const MonstersIndex = () => {
     })
     setFetchedMonsters(newMonsters)
   }
+  
+  const filterMonsterById = (id) => {
+    setFetchedMonsters(fetchedMonsters.filter(item => item.id !== id))
+  }
 
   const monsters = fetchedMonsters.map((monster) => {
-    return <MonsterTile updateMonsterVotes={updateMonsterVotes} key={monster.id} monster={monster} />
+    return <MonsterTile updateMonsterVotes={updateMonsterVotes} 
+      filterMonsterById={filterMonsterById}
+      key={monster.id}
+      monster={monster} 
+      setNotification={props.setNotification}/>
   })
+  
 
   return (
     <div className="grid-container">
