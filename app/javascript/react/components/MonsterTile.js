@@ -14,10 +14,6 @@ const MonsterTile = props => {
     }))
   }, [])
 
-  const render = (id) => {
-    props.render(id)
-  }
-
   return (
     <div className="monster-tile callout secondary cell small-6 row grid-x">
       <div className="small-1 cell">
@@ -29,7 +25,7 @@ const MonsterTile = props => {
          <p>Classification: {monster.classification || "UNKNOWN"} </p>
         </div>  
       </div>
-      <DeleteButton render={render} id={monster.id} role={role} />
+      <DeleteButton render={props.render} id={monster.id} role={role} setNotification={props.setNotification} />
     </div>
   )
 }

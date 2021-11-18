@@ -3,10 +3,6 @@ import React from "react"
 const DeleteButton = props => {
   const {role, id} = props
 
-  const render = () => {
-    props.render(id)
-  }
-
   const deleteMonsterFetch = async () => {
     try {
       const response = await fetch(`/api/v1/monsters/${id}`, {
@@ -20,7 +16,9 @@ const DeleteButton = props => {
       if(!response.ok) {
         throw new Error(`${response.status} (${response.statusText})`)
       }
-      render()
+      const parsedResponse = await response.json()
+      props.render(id)
+      props.setNotification(parsedResponse)
     } catch(err) {
       console.error(err.message)
     }

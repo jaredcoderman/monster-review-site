@@ -4,7 +4,7 @@ const SignInTile = props => {
   if (props.signedIn === null){
     return (
     <div>
-      <a href='/users/sign_in'> Sign In </a> / <a href ='/users/sign_up'>Sign Up</a>
+      <a href='/users/sign_in'> Sign In </a> / <a href ='/users/sign_up' id='sign_up'>Sign Up</a>
     </div>
     )
   } else {

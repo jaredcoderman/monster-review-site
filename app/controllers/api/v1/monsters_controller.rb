@@ -1,9 +1,9 @@
 class Api::V1::MonstersController < ApplicationController
   before_action :authenticate_user, only: [:create, :delete]
   before_action :authorize_user, only: [:delete]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index 
-    binding.pry
     render json: Monster.all
   end
 
@@ -24,25 +24,13 @@ class Api::V1::MonstersController < ApplicationController
 
   def destroy
     Monster.find(params[:id]).destroy
-    render json: {}, status: :no_content
+    render json: { message: "Monster Deleted!" }
   end
 
   private 
 
   def monster_params
     params.require(:monster).permit(:name, :description, :classification, :habitat)
-  end
-
-  def authenticate_user
-    if !user_signed_in?
-      render json: {error: ["You need to be signed in first!"]}
-    end
-  end
-
-  def authorize_user
-    if !user_signed_in? || !current_user.admin?
-      render json: {error: ["You are not authorized to do that!"]}
-    end
   end
 
 end

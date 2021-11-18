@@ -5,6 +5,7 @@ import MonsterShow from "./MonsterShow"
 import MonsterForm from "./MonsterForm"
 import SignInTile from "./SignInTile"
 import AddMonsterTile from "./AddMonsterTile"
+import DisplayNotification from "./Notification"
 
 const NavBar = props => {
   const [signedIn, setSignedIn] = useState(null)
@@ -24,12 +25,19 @@ const fetchUser = async () => {
   }
 }
 
+const [notification, setNotification] = useState("")
+
+// create a notification component  / element 
+// have notification state managed in here 
+// pass down a state setter to whatever component needs to show a notification message 
+
 useEffect(() => {
   fetchUser()
 }, [])
 
   return(
   <div>
+    <DisplayNotification notification={notification} />
     <div className="grid-container navbar">
       <div className ="top-bar cell grid-x"> 
         <div className="cell small-4">
@@ -45,7 +53,10 @@ useEffect(() => {
     </div>
     <div>
       <Route exact path="/monsters/new" component = {MonsterForm} />
-      <Route exact path="/" component = {MonstersIndex} />
+      {/* <Route exact path="/" component={MonstersIndex} /> */}
+      <Route exact path="/">
+        <MonstersIndex setNotification={setNotification} />
+      </Route>
       <Route exact path="/monsters/:id" component = {MonsterShow} />
     </div>
   </div>
