@@ -24,7 +24,11 @@ class Api::V1::MonstersController < ApplicationController
   def update 
     monster = Monster.find(params[:id])
     monster.votes = params[:votes]
-    if !monster.users.include?(current_user) and current_user != nil
+
+    if current_user.admin?
+      monster.save
+      render json: {monster: monster}
+    elsif !monster.users.include?(current_user) and current_user != nil
       monster.users << current_user
       if monster.save
         render json: {monster: monster}

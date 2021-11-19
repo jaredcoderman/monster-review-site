@@ -40,7 +40,7 @@ const MonsterForm = () => {
         }
       }
     })
-    if (formData.description.length < 20) {
+    if (formData.description.length < 20 && !submitErrors.description) {
       submitErrors = {
         ...submitErrors,
         description: "is too short"
@@ -78,33 +78,62 @@ const MonsterForm = () => {
   return (
     <div>
       <h1 className="text-center">Submit a Monster</h1>
-      <form action="/upload" method="post" enctype="multipart/form-data" onSubmit={handleSubmit}>
-        <div>
-          <input name="some-file" type="file"></input>
-          <input value="Upload" type="Submit"></input>
-        </div>    
+      <form onSubmit={handleSubmit}>
         <ErrorList errors ={errors}/> 
-        <label>
+        <label className="field">
           Name:
-          <input type="text" name="name" onChange={handleChange} value={formData.name} />
+          <input 
+            type="text" 
+            name="name" 
+            className="rounder" 
+            onChange={handleChange} 
+            value={formData.name} 
+            placeholder="scary monster"
+          />
         </label>
 
-        <label>
+        <label className="field">
           Description:
-          <input type="text" name="description" onChange={handleChange} value={formData.description} />
+          <input 
+            type="text" 
+            name="description" 
+            className="rounder" 
+            onChange={handleChange} 
+            value={formData.description} 
+            placeholder="terrifying monster from..."
+          />
         </label>
 
-        <label>
+        <label className="field">
           Classification:
-          <input type="text" name="classification" onChange={handleChange} value={formData.classification} />
+          <input 
+            type="text" 
+            name="classification" 
+            className="rounder" 
+            onChange={handleChange} 
+            value={formData.classification}
+            placeholder="humanoid, undead.." 
+          />
         </label>
 
-        <label>
+        <label className="field">
           Habitat:
-          <input type="text" name="habitat" onChange={handleChange} value={formData.habitat} />
+          <input 
+            type="text" 
+            name="habitat" 
+            className="rounder" 
+            onChange={handleChange} 
+            value={formData.habitat} 
+            placeholder="city, planet, country..." 
+          />
         </label>
-        <div>
-          <input className="button" type="submit" value="Submit" />
+        <div className="field">
+          <input 
+            className="rounder" 
+            type="submit" 
+            value="Submit" 
+            
+          />
         </div>
       </form>
     </div>

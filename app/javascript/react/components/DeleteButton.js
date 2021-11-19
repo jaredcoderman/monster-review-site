@@ -27,7 +27,7 @@ const DeleteButton = props => {
   if(role == "admin") {
     return (
       <div className="small-3 cell">
-        <button onClick={deleteMonsterFetch} className="button">DELETE</button>
+        <button onClick={deleteMonsterFetch} className="delete-button">DELETE</button>
       </div>
     )
   } else {

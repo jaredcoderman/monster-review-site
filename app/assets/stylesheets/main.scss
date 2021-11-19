@@ -14,6 +14,14 @@ h4, h1 {
   font-weight: 700;
 }
 
+h3 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 32px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+}
+
 .flash-notice, .flash-alert {
   color: white;
   text-align: center;
@@ -25,7 +33,7 @@ a {
 }
 
 a:hover {
-  transition: 1s;
+  transition: .75s;
   color: #bc2e1e;
   text-shadow:
     0 1px 0px black,
@@ -34,5 +42,38 @@ a:hover {
     2px 1px 1px black,
     2px 3px 2px black,
     3px 2px 2px black,
-    3px 4px 2px black,
+    3px 4px 2px black;
+}
+
+label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.field, .actions, h2 {
+  margin-left: 3rem;
+  width: 60%;
+  color: white;
+  font-family: 'Amatic SC', cursive;
+  font-weight: 900;
+}
+
+.rounder {
+  border: solid 1px white;
+  border-radius: 5px;
+}
+
+ul li {
+  color: white;
+  margin-left: 3rem;
+  font-weight: 900;
+}
+
+.monster-show {
+  margin-left: 2.0rem;
+}
+
+.review-tile {
+  margin-right: 3.0rem;
 }
