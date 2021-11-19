@@ -55,8 +55,10 @@ const MonsterForm = () => {
       const response = await fetch("/api/v1/monsters", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
+        credentials: 'same-origin',
         body: JSON.stringify({monster: formData})
       })
       if(!response.ok) {
@@ -70,7 +72,7 @@ const MonsterForm = () => {
   }
 
   if(shouldRedirect) {
-    return <Redirect to= "/" /> 
+    return <Redirect to="/" /> 
   }
 
   return (

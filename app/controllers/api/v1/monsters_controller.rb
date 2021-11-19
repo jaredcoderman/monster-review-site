@@ -1,4 +1,6 @@
 class Api::V1::MonstersController < ApplicationController
+  before_action :authenticate_user, only: [:create, :delete]
+  before_action :authorize_user, only: [:delete]
 
   def index 
     render json: Monster.all
@@ -19,9 +21,29 @@ class Api::V1::MonstersController < ApplicationController
     end
   end
 
-  private
+  def update 
+    monster = Monster.find(params[:id])
+    monster.votes = params[:votes]
+    if !monster.users.include?(current_user) and current_user != nil
+      monster.users << current_user
+      if monster.save
+        render json: {monster: monster}
+      end
+    else  
+      errors = monster.errors.full_messages.to_sentence
+      render json: { response: errors }
+    end
+  end
+
+  def destroy
+    Monster.find(params[:id]).destroy
+    render json: { message: "Monster Deleted!" }
+  end
+
+  private 
 
   def monster_params
     params.require(:monster).permit(:name, :description, :classification, :habitat)
   end
+
 end
