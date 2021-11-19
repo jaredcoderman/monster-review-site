@@ -76,7 +76,11 @@ const MonsterForm = () => {
   return (
     <div>
       <h1 className="text-center">Submit a Monster</h1>
-      <form onSubmit={handleSubmit}>
+      <form action="/upload" method="post" enctype="multipart/form-data" onSubmit={handleSubmit}>
+        <div>
+          <input name="some-file" type="file"></input>
+          <input value="Upload" type="Submit"></input>
+        </div>    
         <ErrorList errors ={errors}/> 
         <label>
           Name:
@@ -97,7 +101,6 @@ const MonsterForm = () => {
           Habitat:
           <input type="text" name="habitat" onChange={handleChange} value={formData.habitat} />
         </label>
-
         <div>
           <input className="button" type="submit" value="Submit" />
         </div>

@@ -13,6 +13,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'nokogiri'
 gem 'jbuilder', '~> 2.5'
+gem 'carrierwave'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
