@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_184311) do
     t.string "classification"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "photo"
     t.integer "votes", default: 0
   end
 

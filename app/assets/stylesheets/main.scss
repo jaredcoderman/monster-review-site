@@ -20,4 +20,14 @@ h4, h1 {
   font-size: 2.0rem;
 }
 
+a {
+  text-decoration: underline;
+  color: white;
+}
+
+a:hover {
+  color: black;
+  transition: 0.5s;
+}
+
 
