@@ -2,7 +2,7 @@ Monster Review Site
 
 Authors: Jared Head, Alex Ballard, Geoffrey Pelton, Daoudi Baker, Jason Korwek
 
-https://www.monster-mash-mania.herokuapp.com
+https://monster-mash-mania.herokuapp.com
 
 Index page showing each monster that has been seeded and submitted.
 Each monster can be upvoted or downvoted a single time per user.
