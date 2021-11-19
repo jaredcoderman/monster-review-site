@@ -61,21 +61,6 @@ const MonsterShow = (props) => {
           </div>
           <div className="cell medium-7 medium-cell-block-y">
             {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
-            {reviews}
           </div>
         </div>
       </div>
