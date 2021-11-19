@@ -27,5 +27,5 @@ r9 = Review.create( monster: monster3, description: "Such a cool concept for a m
 r10 = Review.create( monster: monster3, description: "Is he allowed at furry conventions?")
 r11 = Review.create( monster: monster3, description: "Fur what it's worth this is a great monster!!")
 
-admin = User.create(username: "jared123", email: "jared@gmail.com", password: "jared123", role="admin")
-member = User.create(username: "bob123", email: "bob@gmail.com", password: "bob123", role="member")
+admin = User.create(username: "jared123", email: "jared@gmail.com", password: "jared123", role: "admin")
+member = User.create(username: "bob123", email: "bob@gmail.com", password: "bob123", role: "member")
