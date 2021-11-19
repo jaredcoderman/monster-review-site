@@ -6,7 +6,9 @@ import ErrorList from './ErrorList'
 const ReviewForm = props => {
   const [notSignedIn, setNotSignedIn] = useState(false)
   const [shouldRedirect, setShouldRedirect] = useState(false)
-  const [formData, setFormData] = useState("")
+  const [formData, setFormData] = useState({
+    description: ""
+  })
   const {id} = props.match.params
 
   const [signedIn, setSignedIn] = useState(null)
@@ -34,7 +36,10 @@ const ReviewForm = props => {
   }, [])
   
   const handleChange = (event) => {
-    setFormData(event.currentTarget.value)
+    setFormData({
+      ...formData,
+      [event.currentTarget.name]: event.currentTarget.value
+    })
   }
 
   const handleSubmit = event => {
@@ -47,13 +52,21 @@ const ReviewForm = props => {
   const [errors, setErrors] = useState([])
   
   const validateSubmission = () => {
-    let submitErrors = []
-    const requiredField = ["description"]
-    if (formData.trim() === ""){
-     submitErrors.push("Description can't be blank") 
-    }
-    if (formData.length < 20){
-      submitErrors.push("Description is too short")
+    let submitErrors = {}
+    const requiredFields = ["description"]
+    requiredFields.forEach((field) => {
+      if (formData[field].trim() === "") {
+        submitErrors = {
+          ...submitErrors,
+          [field]: "is blank"
+        }
+      }
+    })
+    if (formData.description.length < 20 && !submitErrors.description) {
+      submitErrors = {
+        ...submitErrors,
+        description: "is too short"
+      }
     }
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
@@ -68,7 +81,7 @@ const ReviewForm = props => {
           'Accept': 'application/json'
         },
         credentials: "same-origin",
-        body: JSON.stringify({review: {description: formData}})
+        body: JSON.stringify({review: formData})
       })
       if(!response.ok){
         throw new Error(`${response.status}: ${response.statusText}`)
@@ -88,24 +101,25 @@ const ReviewForm = props => {
   return(
     <div className="grid-container">
       <div className="grid-xy grid-padding-xy">
-      <h1> Submit a Review </h1>
-      <form onSubmit={handleSubmit}>
-        <div className="small-4 cell">
-        <ErrorList errors ={errors}/>
-        <label>
-          <h4>Description:</h4>
-          <input 
-          type="text"
-          name="description"
-          placeholder="Your review here"
-          onChange={handleChange} value={formData}
-          />
-        </label>
-        </div>
-        <div>
-          <input className="button" type="submit" value="submit" />
-        </div>
-      </form>
+        <h1 className="text-center"> Submit a Review </h1>
+        <form onSubmit={handleSubmit}>
+          <div className="small-4 cell">
+          <ErrorList errors ={errors}/>
+          <label className="field">
+            <h4>Description:</h4>
+            <input 
+            type="text"
+            name="description"
+            placeholder="Your review here"
+            className="rounder"
+            onChange={handleChange} value={formData.description}
+            />
+          </label>
+          </div>
+          <div className="field">
+            <input className="rounder" type="submit" value="submit" />
+          </div>
+        </form>
       </div>
     </div>
   )

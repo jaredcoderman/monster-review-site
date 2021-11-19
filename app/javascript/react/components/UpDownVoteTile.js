@@ -10,7 +10,7 @@ const UpDownVoteTile = props => {
     props.updateMonsterVotes(votes, id)
   }
 
-const updateVotes = async (direction) =>{
+  const updateVotes = async (direction) =>{
   
   if(direction == "up") {
     const payload = {
@@ -63,10 +63,20 @@ const updateVotes = async (direction) =>{
   }
 }
 
+let paragraphClass = ""
+const baseClasses = "black-text-shadow votes"
+if(monster.votes > 0 ) {
+  paragraphClass = `${baseClasses} positive`
+} else if(monster.votes < 0){
+  paragraphClass = `${baseClasses} negative`
+} else {
+  paragraphClass = `${baseClasses} zero`
+}
+
 return (
   <div>
     <FontAwesomeIcon icon={faArrowUp} onClick={() => updateVotes("up")}/>
-    <p>{monster.votes}</p>
+    <p className={paragraphClass}>{monster.votes}</p>
     <FontAwesomeIcon icon={faArrowDown} onClick={() => updateVotes("down")}/> 
   </div>
 )

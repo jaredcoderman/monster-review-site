@@ -49,17 +49,32 @@ const MonsterShow = (props) => {
   return (
     <div className="grid-y medium-grid-frame">
       <div className="cell shrink header medium-cell-block-container">
-        <h1 className="text-center">Reviews/<Link to={`/monsters/${monsterId}/review/new`}> Add a Review </Link></h1>
+        <h1 className="text-center">Reviews /<Link to={`/monsters/${monsterId}/review/new`}> Add a Review </Link></h1>
       </div>
       <div className="cell medium-auto medium-cell-block-container">
         <div className="grid-x grid-padding-x">
-          <div className="callout secondary cell medium-5 medium-cell-block-y">
+          <div className="callout secondary cell medium-5 medium-cell-block-y monster-show">
             <h1>{monster.name}</h1>
             <h4>{classificationText}</h4>
             <h4>{habitatText}</h4>
             <p>{monster.description}</p>
           </div>
           <div className="cell medium-7 medium-cell-block-y">
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
+            {reviews}
             {reviews}
           </div>
         </div>

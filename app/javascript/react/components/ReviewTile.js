@@ -4,7 +4,7 @@ const ReviewTile = props => {
   const { review } = props 
 
   return (
-    <div className="callout secondary">
+    <div className="callout secondary review-tile">
       <p>{review.description}</p>
     </div>
   )

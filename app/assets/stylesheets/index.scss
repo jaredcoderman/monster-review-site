@@ -16,9 +16,57 @@
   background-color: #222822;
   color: white ;
   border: solid 3px #171717;
+  border-radius: 10px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .monster-tile:hover {
   transition: .5s;
   background-color: #334433;
+}
+
+.votes {
+  margin: 0;
+  width: 1rem;
+  text-align: center;
+  font-weight: 500;
+  font-family: "Verdana";
+}
+
+.black-text-shadow {
+  text-shadow:
+  0 1px 0px black,
+  1px 0 0px black,
+  1px 2px 1px black,
+  2px 1px 1px black,
+  2px 3px 2px black,
+  3px 2px 2px black,
+  3px 4px 2px black;
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}
+
+.zero {
+  color: gray;
+}
+
+.delete-button {
+  background-color: red;
+  border: solid 3px black;
+  padding: 2px 4px;
+  color: white;
+  font-weight: 900;
+  font-size: 2rem;
+  border-radius: 5px;
 }
